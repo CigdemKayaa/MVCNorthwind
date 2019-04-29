@@ -1,0 +1,51 @@
+﻿@model MVCNorthwind.Models.View.ProductsModel
+
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shares/_LayoutPage1.cshtml";
+}
+
+<h2>Ürün Detay</h2>
+
+<div>
+    <h4>Products</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.products.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.products.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.products.QuantityPerUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.products.QuantityPerUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.products.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.products.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.products.Discontinued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.products.Discontinued)
+        </dd>
+
+    </dl>
+</div>
+<p>
+  
+    @Html.ActionLink("Back to List", "Liste")
+</p>

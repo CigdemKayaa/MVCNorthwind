@@ -1,0 +1,41 @@
+﻿@model MVCNorthwind.Models.View.CategoriesModel
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shares/_LayoutPage1.cshtml";
+}
+
+<h2 class="text text-center">Kategori Liste</h2>
+<div>
+    <form method="get" action="/Categories/Liste " class="d-inline-flex">
+        <input type="search" name="name" class="form-control" id="form-group-input" placeholder="Arama" />
+        <button class="btn btn-success" type="submit">Ara</button>
+    </form>
+</div>
+<hr />
+<a class="btn btn-info float-right" href="/Categories/Ekle">Yeni Kayıt</a>
+<table class="table table-hover table table-bordered table table-responsive table table-striped table table-primary">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Categories.CategoryID)</th>
+            <th>@Html.DisplayNameFor(m => m.Categories.CategoryName)</th>
+            <th>@Html.DisplayNameFor(m => m.Categories.Description)</th>
+            <th>Detay</th>
+            <th>Guncel</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.clist)
+        {
+            <tr>
+                <td>@item.CategoryID</td>
+                <td>@item.CategoryName</td>
+                <td>@item.Description</td>
+                <td class="text-center"><a href="/Categories/Detay/@item.CategoryID"><i class="fas fa-search "></i></a></td>
+                <td class="text-center"><a href="/Categories/Guncel/@item.CategoryID"><i class="fas fa-pen-square text-success"></i></a></td>
+                <td class="text-center"><a href="/Categories/Sil/@item.CategoryID"><i class="fas fa-trash-alt text-center"></i></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

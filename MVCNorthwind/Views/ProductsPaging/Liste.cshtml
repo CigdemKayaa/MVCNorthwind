@@ -1,0 +1,74 @@
+﻿
+@model MVCNorthwind.Models.View.ProductsModel
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shares/_LayoutPage1.cshtml";
+}
+
+<h2 class="text text-center">Ürün Liste</h2>
+<div>
+    <form method="get" action="/ProductsPaging/Liste " class="d-inline-flex">
+        <input type="search" name="name" class="form-control" id="form-group-input" placeholder="Arama" />
+        <button class="btn btn-success" type="submit">Ara</button>
+    </form>
+</div>
+<hr />
+<a class="btn btn-info float-right" href="/Products/Ekle">Yeni Kayıt</a>
+<table class="table table-hover table table-bordered table table-responsive table table-striped table table-primary">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.products.ProductID)</th>
+            <th>@Html.DisplayNameFor(m => m.products.ProductName)</th>
+            <th>@Html.DisplayNameFor(m => m.products.Categories.CategoryName)</th>
+            <th>@Html.DisplayNameFor(m => m.products.Suppliers.CompanyName)</th>
+            <th>@Html.DisplayNameFor(m => m.products.UnitPrice)</th>
+            <th>@Html.DisplayNameFor(m => m.products.Discontinued)</th>
+            <th>Detay</th>
+            <th>Guncel</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.plist)
+        {
+            <tr>
+                <td>@item.ProductID</td>
+                <td>@item.ProductName</td>
+                <td>@item.CategoryName</td>
+                <td>@item.CompanyName</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.Discontinued</td>
+                <td class="text-center"><a href="/Products/Detay/@item.ProductID"><i class="fas fa-search "></i></a></td>
+                <td class="text-center"><a href="/Products/Guncel/@item.ProductID"><i class="fas fa-pen-square text-success"></i></a></td>
+                <td class="text-center"><a href="/Products/Sil/@item.ProductID"><i class="fas fa-trash-alt text-center"></i></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*bu kısmı bootsrap pagingden kopyaladık.*@
+<hr/>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        @for (int i = 1; i <= Model.TotalPage; i++)
+        {
+            <li class="page-item"><a class="page-link" href="/ProductsPaging/Liste/@i">@i</a></li>
+
+        }
+
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>
+<div>
+    <div class="row">
+        <div class="col-md-7">
+            Total Values
+        </div>
+        <div class="col-md-5">
+            @Model.TotalStock
+        </div>
+    </div>
+</div>
+
+
+

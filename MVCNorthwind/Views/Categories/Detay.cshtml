@@ -1,0 +1,36 @@
+﻿@model MVCNorthwind.Models.View.CategoriesModel
+
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shares/_LayoutPage1.cshtml";
+}
+
+<h2>Detay</h2>
+
+<div>
+    <h4>Categories</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+
+        <dt>
+            @Html.DisplayNameFor(m => m.Categories.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(m => m.Categories.CategoryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(m => m.Categories.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(m => m.Categories.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+  
+    @Html.ActionLink("Back to List", "Liste")
+</p>
